@@ -1,0 +1,37 @@
+<div>
+    <mat-tab-group dynamicHeight class="tabs">
+        <mat-tab label="Accueil">
+            <mat-card class="card" *ngFor="let app of apps">
+                <mat-card-header>
+                    <img mat-card-avatar src="{{ app.icon }}">
+                    <mat-card-title>{{ app.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ app.subtitle }}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{ app.image }}">
+                <mat-card-content>
+                    <p>{{ app.content }}</p>
+                </mat-card-content>
+                <mat-card-actions align="center">
+                    <a mat-raised-button color="{{ app.buttonColor }}" href="{{ app.link }}">{{ app.buttonText }}</a>
+                </mat-card-actions>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Téléchargements">
+            <div class="download" *ngFor="let app of apps">
+                <mat-expansion-panel *ngIf="app.title !== 'Games Master'">
+                    <mat-expansion-panel-header>
+                        <img src="{{ app.icon }}">
+                        <mat-panel-title>{{ app.title }}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-list>
+                        <mat-list-item>Version : {{ app.version }}</mat-list-item>
+                        <mat-list-item>OS : {{ app.os }}</mat-list-item>
+                        <mat-list-item>Taille : {{ app.size }}</mat-list-item>
+                        <mat-list-item>Format : {{ app.format }}</mat-list-item>
+                    </mat-list>
+                    <mat-action-row><a mat-stroked-button color="primary" href="{{ app.link }}">Télécharger</a></mat-action-row>
+                </mat-expansion-panel>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

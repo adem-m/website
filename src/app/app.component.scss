@@ -1,0 +1,13 @@
+body
+{
+  background-color: rgb(223, 223, 223);
+  min-height: calc(100% - 64px);  
+  height: fit-content;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar a
+{
+  margin-right: 8px;
+}
