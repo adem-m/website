@@ -1,7 +1,7 @@
 <div>
-    <mat-tab-group dynamicHeight class="tabs">
+    <mat-tab-group dynamicHeight class="tabs" [(selectedIndex)]="tabIndex">
         <mat-tab label="Accueil">
-            <mat-card class="card" *ngFor="let app of apps">
+            <mat-card class="card" *ngFor="let app of apps; index as i">
                 <mat-card-header>
                     <img mat-card-avatar src="{{ app.icon }}">
                     <mat-card-title>{{ app.title }}</mat-card-title>
@@ -12,13 +12,16 @@
                     <p>{{ app.content }}</p>
                 </mat-card-content>
                 <mat-card-actions align="center">
-                    <a mat-raised-button color="{{ app.buttonColor }}" href="{{ app.link }}">{{ app.buttonText }}</a>
+                    <a *ngIf="app.buttonText === 'Télécharger'" mat-raised-button color="{{ app.buttonColor }}"
+                        (click)="goDlTab(i)">{{ app.buttonText }}</a>
+                    <a *ngIf="app.buttonText === 'Jouer'" mat-raised-button color="{{ app.buttonColor }}"
+                        href="{{ app.link }}">{{ app.buttonText }}</a>
                 </mat-card-actions>
             </mat-card>
         </mat-tab>
         <mat-tab label="Téléchargements">
             <div class="download" *ngFor="let app of apps">
-                <mat-expansion-panel *ngIf="app.title !== 'Games Master'">
+                <mat-expansion-panel *ngIf="app.buttonText === 'Télécharger'" [(expanded)]="app.expanded">
                     <mat-expansion-panel-header>
                         <img src="{{ app.icon }}">
                         <mat-panel-title>{{ app.title }}</mat-panel-title>
@@ -29,7 +32,9 @@
                         <mat-list-item>Taille : {{ app.size }}</mat-list-item>
                         <mat-list-item>Format : {{ app.format }}</mat-list-item>
                     </mat-list>
-                    <mat-action-row><a mat-stroked-button color="primary" href="{{ app.link }}">Télécharger</a></mat-action-row>
+                    <mat-action-row><a mat-flat-button color="primary" href="{{ app.link }}">Télécharger</a> <a
+                            mat-stroked-button color="primary" href="{{ app.ghlink }}" target="_blank">Code source</a>
+                    </mat-action-row>
                 </mat-expansion-panel>
             </div>
         </mat-tab>
