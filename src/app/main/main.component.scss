@@ -4,7 +4,7 @@ div
 }
 .card
 {
-    margin: 1.5em auto;
+    margin: 1.5em 0.5em;
     max-width: 800px;
     padding-bottom: 2em;
 }
@@ -21,4 +21,8 @@ div
 .download a
 {
     margin-right: 8px;
+}
+mat-expansion-panel
+{
+    margin: auto 0.5em;
 }
