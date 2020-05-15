@@ -14,7 +14,7 @@
                 <mat-card-actions align="center">
                     <a *ngIf="app.buttonText === 'Télécharger'" mat-raised-button color="{{ app.buttonColor }}"
                         (click)="goDlTab(i)">{{ app.buttonText }}</a>
-                    <a *ngIf="app.buttonText === 'Jouer'" mat-raised-button color="{{ app.buttonColor }}"
+                    <a *ngIf="app.buttonText !== 'Télécharger'" mat-raised-button color="{{ app.buttonColor }}"
                         href="{{ app.link }}">{{ app.buttonText }}</a>
                 </mat-card-actions>
             </mat-card>
